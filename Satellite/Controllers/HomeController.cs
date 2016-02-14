@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Satellite.Controllers
 {
@@ -15,7 +11,8 @@ namespace Satellite.Controllers
 
 		public ActionResult About()
 		{
-			ViewBag.Message = "Your application description page.";
+			//TODO: Add content linkage
+			ViewBag.Message = "Simple application for integrating with NASA API's and demonstrating basic concepts";
 
 			return View();
 		}
