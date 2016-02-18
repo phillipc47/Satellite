@@ -10,6 +10,5 @@ namespace Satellite.Models.GeoCode
 		public string StreetAddress { get; set; }
 		public string City { get; set; }
 		public string State { get; set; }
-
 	}
 }

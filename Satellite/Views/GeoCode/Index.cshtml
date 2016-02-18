@@ -11,25 +11,25 @@
         <div class="form-group">
             <label for="inputStreet" class="col-sm-2 control-label">Street</label>
             <div class="col-sm-10">
-                <input class="form-control" id="inputStreet" placeholder="Street Address" name = "StreetAddress">
+                <input class="form-control" id="inputStreet" placeholder="Street Address" name="StreetAddress">
             </div>
         </div>
         <div class="form-group">
             <label for="inputCity" class="col-sm-2 control-label">City</label>
             <div class="col-sm-10">
-                <input class="form-control" id="inputCity" placeholder="City" name ="City">
+                <input class="form-control" id="inputCity" placeholder="City" name="City">
             </div>
         </div>
         <div class="form-group">
             <label for="inputState" class="col-sm-2 control-label">State</label>
             <div class="col-sm-10">
-                <input class="form-control" id="inputState" placeholder="State" name ="State">
+                <input class="form-control" id="inputState" placeholder="State" name="State">
             </div>
         </div>
         <div class="form-group">
             <label for="inputPostal" class="col-sm-2 control-label">Postal Code</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" id="inputPostal" placeholder="Postal Code" name = "PostalCode">
+                <input type="number" class="form-control" id="inputPostal" placeholder="Postal Code" name="PostalCode">
             </div>
         </div>
         <div class="form-group">
@@ -44,11 +44,16 @@
 </form>
 
 @Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/GeoCode")
+
+@*<script src="~/Scripts/GeoCode.js"></script>*@
+
+@*@Scripts.Render("~/bundles/jquery")
 <script type="text/javascript">
     $('#btnSubmit').click(function () {
         $("#btnSubmit").attr("disabled", "disabled").text("Searching...");
         $('#searchResultDiv').html('');
         $('#formSearchGeoCode').submit();
     });
-</script>
+</script>*@
 
