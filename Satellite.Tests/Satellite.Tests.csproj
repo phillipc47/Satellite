@@ -95,9 +95,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Satellite\Satellite.csproj">
+    <ProjectReference Include="..\Satellite\Satellite.Web.csproj">
       <Project>{2A1030C9-87FB-47EC-9D13-36E13733CF91}</Project>
-      <Name>Satellite</Name>
+      <Name>Satellite.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

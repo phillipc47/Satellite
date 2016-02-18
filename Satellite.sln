@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite", "Satellite\Satellite.csproj", "{2A1030C9-87FB-47EC-9D13-36E13733CF91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Web", "Satellite\Satellite.Web.csproj", "{2A1030C9-87FB-47EC-9D13-36E13733CF91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Tests", "Satellite.Tests\Satellite.Tests.csproj", "{183E0249-8858-4955-B734-05BC8033B591}"
 EndProject
