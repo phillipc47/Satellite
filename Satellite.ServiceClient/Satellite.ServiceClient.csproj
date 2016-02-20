@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicSerializer.cs" />
     <Compile Include="Client\GeoCodeAddressNonParsedClient.cs" />
     <Compile Include="Model\GeoCodeAddressModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

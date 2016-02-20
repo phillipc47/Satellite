@@ -51,7 +51,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Model\GeoCodeAddressModelSample.cs" />
+    <Compile Include="BasicSerializerTest.cs" />
+    <Compile Include="Data\GeoCodeAddressModelSample.cs" />
+    <Compile Include="Data\Note.cs" />
     <Compile Include="Model\GeoCodeAddressModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

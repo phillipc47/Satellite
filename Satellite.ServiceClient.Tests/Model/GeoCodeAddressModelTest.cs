@@ -1,13 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml;
 using NUnit.Framework;
 using Satellite.ServiceClient.Model;
 using System.Xml.Serialization;
+using Satellite.ServiceClient.Tests.Data;
 
 namespace Satellite.ServiceClient.Tests.Model
 {
@@ -74,6 +72,32 @@ namespace Satellite.ServiceClient.Tests.Model
 			result = CleanString(result);
 			string strippedSample = CleanString(GeoCodeAddressModelSample.StringSample);
 			Assert.AreEqual(strippedSample, result);
+		}
+
+		[Test]
+		public void InvalidBooleanValue()
+		{
+			const string invalidBoolean = "foo";
+			GeoCodeAddressModel.GeocodeAddressNonParsed sample = new GeoCodeAddressModel.GeocodeAddressNonParsed();
+			
+			sample.shouldCalculateCensus = invalidBoolean;
+			sample.shouldNotStoreTransactionDetails = invalidBoolean;
+			sample.shouldReturnReferenceGeometry = invalidBoolean;
+
+			Assert.AreEqual(string.Empty, sample.shouldCalculateCensus);
+			Assert.AreEqual(string.Empty, sample.shouldReturnReferenceGeometry);
+			Assert.AreEqual(string.Empty, sample.shouldNotStoreTransactionDetails);
+		}
+
+		[Test]
+		public void DefaultValues()
+		{
+			GeoCodeAddressModel.GeocodeAddressNonParsed sample = new GeoCodeAddressModel.GeocodeAddressNonParsed();
+
+			Assert.AreEqual("2010", sample.censusYear);
+			Assert.AreEqual("false", sample.shouldCalculateCensus);
+			Assert.AreEqual("false", sample.shouldReturnReferenceGeometry);
+			Assert.AreEqual("false", sample.shouldNotStoreTransactionDetails);
 		}
 	}
 }

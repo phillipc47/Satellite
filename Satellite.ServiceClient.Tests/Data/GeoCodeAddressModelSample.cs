@@ -1,6 +1,6 @@
 ﻿using Satellite.ServiceClient.Model;
 
-namespace Satellite.ServiceClient.Tests.Model
+namespace Satellite.ServiceClient.Tests.Data
 {
 	internal static class GeoCodeAddressModelSample
 	{
