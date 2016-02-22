@@ -1,25 +1,28 @@
-﻿namespace Satellite.ServiceClient.Model
+﻿using System.Xml.Serialization;
+
+namespace Satellite.ServiceClient.Model
 {
 	public class GeoCodeAddressModel
 	{
-		[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.xmlsoap.org/soap/envelope/")]
-		[System.Xml.Serialization.XmlRootAttribute(Namespace = "http://schemas.xmlsoap.org/soap/envelope/", IsNullable = false)]
+		[XmlType(AnonymousType = true, Namespace = XmlNamespaces.SoapNamespace)]
+		[XmlRoot(Namespace = XmlNamespaces.SoapNamespace, IsNullable = false)]
 		public class Envelope
 		{
+			
 			public EnvelopeBody Body { get; set; }
 		}
 
 
-		[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.xmlsoap.org/soap/envelope/")]
+		[XmlTypeAttribute(AnonymousType = true, Namespace = XmlNamespaces.SoapNamespace)]
 		public class EnvelopeBody
 		{
-			[System.Xml.Serialization.XmlElementAttribute(Namespace = "https://geoservices.tamu.edu/")]
+			[XmlElementAttribute(Namespace = XmlNamespaces.GeoServices)]
 			public GeocodeAddressNonParsed GeocodeAddressNonParsed { get; set; }
 		}
 
 
-		[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "https://geoservices.tamu.edu/")]
-		[System.Xml.Serialization.XmlRootAttribute(Namespace = "https://geoservices.tamu.edu/", IsNullable = false)]
+		[XmlTypeAttribute(AnonymousType = true, Namespace = XmlNamespaces.GeoServices)]
+		[XmlRootAttribute(Namespace = XmlNamespaces.GeoServices, IsNullable = false)]
 		public class GeocodeAddressNonParsed
 		{
 			private string internalShouldCalculateCensus;
@@ -39,7 +42,7 @@
 
 			public GeocodeAddressNonParsed()
 			{
-				censusYear = "2010";
+				censusYear = "TwoThousandTen";
 				shouldNotStoreTransactionDetails = "false";
 				shouldCalculateCensus = "false";
 				shouldReturnReferenceGeometry = "false";

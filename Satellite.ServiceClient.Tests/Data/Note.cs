@@ -1,9 +1,10 @@
 ﻿using System.Xml.Serialization;
+using Satellite.ServiceClient.Model;
 
 namespace Satellite.ServiceClient.Tests.Data
 {
 	[XmlType(AnonymousType = true)]
-	[XmlRootAttribute(Namespace = "", IsNullable = false)]
+	[XmlRoot(Namespace = XmlNamespaces.SoapNamespace, IsNullable = false)]
 	public class Note
 	{
 		public string to { get; set; }

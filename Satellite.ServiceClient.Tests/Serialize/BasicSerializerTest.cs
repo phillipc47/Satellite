@@ -1,7 +1,9 @@
-﻿using NUnit.Framework;
+﻿using System.Text.RegularExpressions;
+using NUnit.Framework;
+using Satellite.ServiceClient.Serialize;
 using Satellite.ServiceClient.Tests.Data;
 
-namespace Satellite.ServiceClient.Tests
+namespace Satellite.ServiceClient.Tests.Serialize
 {
 	[TestFixture]
 	public class BasicSerializerTest
@@ -12,7 +14,7 @@ namespace Satellite.ServiceClient.Tests
 		{
 			Note note = new Note
 			{
-				from = new string('f', 5000),
+				@from = new string('f', 5000),
 				heading = new string('h', 5000),
 				to = new string('t', 5000)
 			};
@@ -43,6 +45,27 @@ namespace Satellite.ServiceClient.Tests
 			Assert.IsFalse(result.Contains("\t"));
 			Assert.IsFalse(result.Contains("\r"));
 			Assert.IsFalse(result.Contains("\n"));
+		}
+
+		[Test]
+		public void NoXmlHeader()
+		{
+			Note note = CreateNote();
+
+			string result = Serialze(note);
+
+			Match match = Regex.Match(result, "^xml$");
+			Assert.AreEqual(0, match.Length);
+		}
+
+		[Test]
+		public void SoapNamespaceIsRespected()
+		{
+			Note note = CreateNote();
+
+			string result = Serialze(note);
+
+			Assert.IsTrue(result.Contains("<soap:Note"));
 		}
 	}
 }

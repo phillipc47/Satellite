@@ -94,7 +94,7 @@ namespace Satellite.ServiceClient.Tests.Model
 		{
 			GeoCodeAddressModel.GeocodeAddressNonParsed sample = new GeoCodeAddressModel.GeocodeAddressNonParsed();
 
-			Assert.AreEqual("2010", sample.censusYear);
+			Assert.AreEqual("TwoThousandTen", sample.censusYear);
 			Assert.AreEqual("false", sample.shouldCalculateCensus);
 			Assert.AreEqual("false", sample.shouldReturnReferenceGeometry);
 			Assert.AreEqual("false", sample.shouldNotStoreTransactionDetails);
