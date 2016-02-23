@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3B251E40-26FB-4034-9632-5D20D51A90F6}</ProjectGuid>
+    <ProjectGuid>{070A56DA-358F-4CC5-B0C9-484679A7C124}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Satellite.ServiceClient</RootNamespace>
-    <AssemblyName>Satellite.ServiceClient</AssemblyName>
+    <RootNamespace>Satellite.Environment.Tests</RootNamespace>
+    <AssemblyName>Satellite.Environment.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,11 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\XmlNamespaces.cs" />
-    <Compile Include="Serialize\BasicSerializer.cs" />
-    <Compile Include="Client\GeoCodeAddressNonParsedClient.cs" />
-    <Compile Include="Model\GeoCodeAddressModel.cs" />
+    <Compile Include="ApplicationConfigurationTest.cs" />
+    <Compile Include="Configuration\ApplicationConfigurationManagerTest.cs" />
+    <Compile Include="Configuration\ConfigurationKeyDataTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Satellite.Envrionment\Satellite.Envrionment.csproj">

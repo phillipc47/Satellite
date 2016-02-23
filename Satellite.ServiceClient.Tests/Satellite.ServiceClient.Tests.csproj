@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -59,6 +63,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Satellite.Envrionment\Satellite.Envrionment.csproj">
+      <Project>{82B50D58-C595-45A6-9273-327390AD0C00}</Project>
+      <Name>Satellite.Envrionment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Satellite.ServiceClient\Satellite.ServiceClient.csproj">
       <Project>{3b251e40-26fb-4034-9632-5d20d51a90f6}</Project>
       <Name>Satellite.ServiceClient</Name>

@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Satellite.Envrionment;
 using Satellite.ServiceClient.Model;
 using Satellite.ServiceClient.Serialize;
 
@@ -13,21 +14,29 @@ namespace Satellite.ServiceClient.Client
 {
 	public class GeoCodeAddressNonParsedClient
 	{
+		private static class RequestValues
+		{
+			public const string SoapAction = @"SOAPAction: ""https://geoservices.tamu.edu/GeocodeAddressNonParsed""";
+			public const string Method = "POST";
+			public const string Xml = "text/xml";
+			public const string ContentType = Xml + ";charset=\"utf-8\"";
+		}
+
+		private IApplicationConfiguration ApplicationConfiguration { get; set; }
+
+		public GeoCodeAddressNonParsedClient(IApplicationConfiguration applicationConfiguration)
+		{
+			ApplicationConfiguration = applicationConfiguration;
+		}
+
 		public HttpWebRequest CreateWebRequest()
 		{
-			//string url =
-			//	@"https://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderService_V04_01.asmx?op=GeocodeAddressNonParsed";
-			string url =
-				@"https://geoservices.tamu.edu/Services/Geocode/WebService/GeocoderService_V04_01.asmx";
+			HttpWebRequest webRequest = WebRequest.CreateHttp(ApplicationConfiguration.GeoCodeServiceUrl);
+			webRequest.Headers.Add(RequestValues.SoapAction);
 
-			//"https://geoservices.tamu.edu/GeocodeAddressNonParsed"
-
-			HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
-			webRequest.Headers.Add(@"SOAPAction: ""https://geoservices.tamu.edu/GeocodeAddressNonParsed""");
-													 
-			webRequest.ContentType = "text/xml;charset=\"utf-8\"";
-			webRequest.Accept = "text/xml";
-			webRequest.Method = "POST";
+			webRequest.ContentType = RequestValues.ContentType;
+			webRequest.Accept = RequestValues.Xml;
+			webRequest.Method = RequestValues.Method;
 			webRequest.ProtocolVersion = HttpVersion.Version11;
 
 			return webRequest;
@@ -40,7 +49,7 @@ namespace Satellite.ServiceClient.Client
 			GeoCodeAddressModel.GeocodeAddressNonParsed addressData = new GeoCodeAddressModel.GeocodeAddressNonParsed
 			{
 				//TODO: Config API Key and encrypt
-				apiKey = "",
+				apiKey = ApplicationConfiguration.ApiKey,
 				state = "California",
 				streetAddress = "1600 Amphitheatre Pkwy",
 				city = "Mountain View",

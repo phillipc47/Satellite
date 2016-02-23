@@ -5,11 +5,15 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Web", "Satellite\Satellite.Web.csproj", "{2A1030C9-87FB-47EC-9D13-36E13733CF91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Tests", "Satellite.Tests\Satellite.Tests.csproj", "{183E0249-8858-4955-B734-05BC8033B591}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Web.Tests", "Satellite.Tests\Satellite.Web.Tests.csproj", "{183E0249-8858-4955-B734-05BC8033B591}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.ServiceClient", "Satellite.ServiceClient\Satellite.ServiceClient.csproj", "{3B251E40-26FB-4034-9632-5D20D51A90F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.ServiceClient.Tests", "Satellite.ServiceClient.Tests\Satellite.ServiceClient.Tests.csproj", "{A62D8746-06A9-4A85-9C30-B0F0282B5AB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Envrionment", "Satellite.Envrionment\Satellite.Envrionment.csproj", "{82B50D58-C595-45A6-9273-327390AD0C00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Environment.Tests", "Satellite.Environment.Tests\Satellite.Environment.Tests.csproj", "{070A56DA-358F-4CC5-B0C9-484679A7C124}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{A62D8746-06A9-4A85-9C30-B0F0282B5AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A62D8746-06A9-4A85-9C30-B0F0282B5AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A62D8746-06A9-4A85-9C30-B0F0282B5AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82B50D58-C595-45A6-9273-327390AD0C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B50D58-C595-45A6-9273-327390AD0C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B50D58-C595-45A6-9273-327390AD0C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B50D58-C595-45A6-9273-327390AD0C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{070A56DA-358F-4CC5-B0C9-484679A7C124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{070A56DA-358F-4CC5-B0C9-484679A7C124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{070A56DA-358F-4CC5-B0C9-484679A7C124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{070A56DA-358F-4CC5-B0C9-484679A7C124}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
