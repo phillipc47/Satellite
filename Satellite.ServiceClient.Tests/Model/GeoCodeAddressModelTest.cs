@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using NUnit.Framework;
 using Satellite.ServiceClient.Model;
 using System.Xml.Serialization;
-using Satellite.ServiceClient.Tests.Data;
+using Satellite.Data.Test;
 
 namespace Satellite.ServiceClient.Tests.Model
 {

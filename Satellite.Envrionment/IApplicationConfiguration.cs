@@ -4,6 +4,5 @@
 	{
 		string GeoCodeServiceUrl { get; }
 		string ApiKey { get; }
-
 	}
 }

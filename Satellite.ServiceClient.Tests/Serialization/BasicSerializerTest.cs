@@ -1,9 +1,10 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
-using Satellite.ServiceClient.Serialize;
-using Satellite.ServiceClient.Tests.Data;
+using Satellite.Data.Test;
+using Satellite.ServiceClient.Serialization;
 
-namespace Satellite.ServiceClient.Tests.Serialize
+namespace Satellite.ServiceClient.Tests.Serialization
 {
 	[TestFixture]
 	public class BasicSerializerTest
@@ -24,6 +25,11 @@ namespace Satellite.ServiceClient.Tests.Serialize
 		private string Serialze(Note note)
 		{
 			return Serializer.Serialze(note);
+		}
+
+		private Note DeSerialize(string data)
+		{
+			return Serializer.DeSerialize(data);
 		}
 
 		[SetUp]
@@ -66,6 +72,33 @@ namespace Satellite.ServiceClient.Tests.Serialize
 			string result = Serialze(note);
 
 			Assert.IsTrue(result.Contains("<soap:Note"));
+		}
+
+		[Test]
+		public void ValidObjectIsReturned()
+		{
+			Note note = CreateNote();
+			string data = Serialze(note);
+
+			Note result = DeSerialize(data);
+
+			Assert.IsNotNull(result);
+			Assert.AreEqual(note.body, result.body);
+			Assert.AreEqual(note.from, result.from);
+			Assert.AreEqual(note.heading, result.heading);
+		}
+
+		[Test]
+		public void InvalidXml()
+		{
+			Assert.Throws<InvalidOperationException>(() => DeSerialize("invalid xml"));
+		}
+
+		[Test]
+		public void DataIsNotOfProperType()
+		{
+			string notNoteData = GeoCodeAddressModelSample.StringSample;
+			Assert.Throws<InvalidOperationException>(() => DeSerialize(notNoteData));
 		}
 	}
 }

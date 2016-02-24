@@ -1,7 +1,7 @@
 ﻿using System.Xml.Serialization;
 using Satellite.ServiceClient.Model;
 
-namespace Satellite.ServiceClient.Tests.Data
+namespace Satellite.Data.Test
 {
 	[XmlType(AnonymousType = true)]
 	[XmlRoot(Namespace = XmlNamespaces.SoapNamespace, IsNullable = false)]
@@ -13,12 +13,12 @@ namespace Satellite.ServiceClient.Tests.Data
 		public string body { get; set; }
 	}
 
-	[XmlTypeAttribute(AnonymousType = true)]
-	[XmlRootAttribute(Namespace = "", IsNullable = false)]
+	[XmlType(AnonymousType = true)]
+	[XmlRoot(Namespace = "", IsNullable = false)]
 	public class Notes
 	{
 		/// <remarks/>
-		[System.Xml.Serialization.XmlElementAttribute("note")]
+		[XmlElement("note")]
 		public Note[] notes { get; set; }
 	}
 }

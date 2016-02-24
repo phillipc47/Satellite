@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A62D8746-06A9-4A85-9C30-B0F0282B5AB3}</ProjectGuid>
+    <ProjectGuid>{C2EC8AA5-0C81-46DE-829A-3E94BF1469ED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Satellite.ServiceClient.Tests</RootNamespace>
-    <AssemblyName>Satellite.ServiceClient.Tests</AssemblyName>
+    <RootNamespace>Satellite.ServiceClient.MS.Tests</RootNamespace>
+    <AssemblyName>Satellite.ServiceClient.MS.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -45,15 +45,11 @@
     <Reference Include="mscorlib.4.0.0.0.Fakes">
       <HintPath>FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.4.0.0.0.Fakes">
       <HintPath>FakesAssemblies\System.4.0.0.0.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="System.XML" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -61,18 +57,28 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise />
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Model\GeoCodeAddressResponseModelTest.cs" />
-    <Compile Include="Model\QueryStatusCodeTest.cs" />
-    <Compile Include="Serialization\BasicSerializerTest.cs" />
-    <Compile Include="Model\GeoCodeAddressModelTest.cs" />
+    <Compile Include="GeoCodeAddressNonParsedClientMSTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Fakes Include="Fakes\System.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\mscorlib.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Satellite.Data.Test\Satellite.Data.Test.csproj">
-      <Project>{20448e2c-1de1-4893-839e-c786263f938d}</Project>
+      <Project>{20448E2C-1DE1-4893-839E-C786263F938D}</Project>
       <Name>Satellite.Data.Test</Name>
     </ProjectReference>
     <ProjectReference Include="..\Satellite.Envrionment\Satellite.Envrionment.csproj">
@@ -80,12 +86,9 @@
       <Name>Satellite.Envrionment</Name>
     </ProjectReference>
     <ProjectReference Include="..\Satellite.ServiceClient\Satellite.ServiceClient.csproj">
-      <Project>{3b251e40-26fb-4034-9632-5d20d51a90f6}</Project>
+      <Project>{3B251E40-26FB-4034-9632-5D20D51A90F6}</Project>
       <Name>Satellite.ServiceClient</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

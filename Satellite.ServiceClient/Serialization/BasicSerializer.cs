@@ -4,9 +4,9 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Satellite.ServiceClient.Serialize
+namespace Satellite.ServiceClient.Serialization
 {
-	public class BasicSerializer<T>
+	public class BasicSerializer<T> : IBasicSerializer<T>
 	{
 		private string CleanString(string source)
 		{
@@ -38,6 +38,15 @@ namespace Satellite.ServiceClient.Serialize
 				ConformanceLevel = ConformanceLevel.Fragment,
 				Indent = true
 			};
+		}
+
+		public T DeSerialize(string data)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof (T));
+			using (StringReader reader = new StringReader(data))
+			{
+				return (T)serializer.Deserialize(reader);
+			}
 		}
 
 		public string Serialze(T data)

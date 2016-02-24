@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Envrionment", "Sa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Environment.Tests", "Satellite.Environment.Tests\Satellite.Environment.Tests.csproj", "{070A56DA-358F-4CC5-B0C9-484679A7C124}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.ServiceClient.MS.Tests", "Satellite.ServiceClient.MS.Tests\Satellite.ServiceClient.MS.Tests.csproj", "{C2EC8AA5-0C81-46DE-829A-3E94BF1469ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite.Data.Test", "Satellite.Data.Test\Satellite.Data.Test.csproj", "{20448E2C-1DE1-4893-839E-C786263F938D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{070A56DA-358F-4CC5-B0C9-484679A7C124}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{070A56DA-358F-4CC5-B0C9-484679A7C124}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{070A56DA-358F-4CC5-B0C9-484679A7C124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2EC8AA5-0C81-46DE-829A-3E94BF1469ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2EC8AA5-0C81-46DE-829A-3E94BF1469ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2EC8AA5-0C81-46DE-829A-3E94BF1469ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2EC8AA5-0C81-46DE-829A-3E94BF1469ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20448E2C-1DE1-4893-839E-C786263F938D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20448E2C-1DE1-4893-839E-C786263F938D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20448E2C-1DE1-4893-839E-C786263F938D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20448E2C-1DE1-4893-839E-C786263F938D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
