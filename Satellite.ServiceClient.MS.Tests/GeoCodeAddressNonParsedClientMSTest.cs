@@ -3,7 +3,6 @@ using System.IO;
 using System.Net;
 using System.Net.Fakes;
 using System.Text;
-using System.Xml.Serialization;
 using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.QualityTools.Testing.Fakes.Shims;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,6 +25,13 @@ namespace Satellite.ServiceClient.MS.Tests
 			public const string ApiKey = @"SomeKey";
 		}
 
+
+		private Mock<IApplicationConfiguration> ApplicationConfiguration { get; set; }
+		private Mock<IBasicSerializer<GeoCodeAddressModel.Envelope>> RequestSerializer { get; set; }
+		private Mock<IBasicSerializer<GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet>> ResponseSerializer { get; set; }
+
+		private GeoCodeAddressNonParsedClient Client { get; set; }
+
 		private void ExpectLookupUrl()
 		{
 			ApplicationConfiguration.Setup(applicationConfiguration => applicationConfiguration.GeoCodeServiceUrl).Returns(ExpectedValues.Url);
@@ -34,6 +40,16 @@ namespace Satellite.ServiceClient.MS.Tests
 		private void ExpectLookupApiKey()
 		{
 			ApplicationConfiguration.Setup(applicationConfiguration => applicationConfiguration.ApiKey).Returns(ExpectedValues.ApiKey);
+		}
+
+		private void ExpectSerialize(string expectedResult)
+		{
+			RequestSerializer.Setup(serializer => serializer.Serialze(It.IsAny<GeoCodeAddressModel.Envelope>())).Returns(expectedResult);
+		}
+
+		private void ExpectDeSerialize(GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet ExpectedResult)
+		{
+			ResponseSerializer.Setup(serializer => serializer.DeSerialize(It.IsAny<string>())).Returns(ExpectedResult);
 		}
 
 		private Stream BuildStream(string data = "")
@@ -52,12 +68,6 @@ namespace Satellite.ServiceClient.MS.Tests
 
 			return memoryStream;
 		}
-
-		private Mock<IApplicationConfiguration> ApplicationConfiguration { get; set; }
-		private Mock<IBasicSerializer<GeoCodeAddressModel.Envelope>> RequestSerializer { get; set; }
-		private Mock<IBasicSerializer<GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet>> ResponseSerializer { get; set; }
-
-		private GeoCodeAddressNonParsedClient Client { get; set; }
 
 		private GeoCodeAddressModel.GeocodeAddressNonParsed CreateAddressData()
 		{
@@ -86,7 +96,7 @@ namespace Satellite.ServiceClient.MS.Tests
 			ShimBehaviors.BehaveAsDefaultValue();
 		}
 
-		private GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet SendData(HttpStatusCode statusCode, GeoCodeAddressModel.GeocodeAddressNonParsed addressData)
+		private GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet SendData(HttpStatusCode statusCode, string dataToSend, GeoCodeAddressModel.GeocodeAddressNonParsed addressData)
 		{
 			using (ShimsContext.Create())
 			{
@@ -96,11 +106,11 @@ namespace Satellite.ServiceClient.MS.Tests
 				ShimWebRequest.CreateHttpString = (url) => requestShim.Instance;
 				requestShim.HeadersGet = () => new WebHeaderCollection();
 
-				ExpectSerialize(GeoCodeAddressModelSample.StringSample);
+				ExpectSerialize(dataToSend);
 				GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet serviceResponse = GeoCodeAddressModelResponseSample.TypedSample;
 				ExpectDeSerialize(serviceResponse);
 
-				using (Stream requestStream = BuildStream(), responseStream = BuildStream(GeoCodeAddressModelResponseSample.StringSample))
+				using (Stream requestStream = BuildStream(), responseStream = BuildStream(dataToSend))
 				{
 					requestShim.GetRequestStream = () => requestStream;
 					requestShim.GetResponse = () => responseShim.Instance;
@@ -117,23 +127,11 @@ namespace Satellite.ServiceClient.MS.Tests
 			}
 		}
 
-		private void ExpectSerialize(string expectedResult)
-		{
-			RequestSerializer.Setup(serializer => serializer.Serialze(It.IsAny<GeoCodeAddressModel.Envelope>())).Returns(expectedResult);
-		}
-
-		private void ExpectDeSerialize(GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet ExpectedResult)
-		{
-			ResponseSerializer.Setup(serializer => serializer.DeSerialize(It.IsAny<string>())).Returns(ExpectedResult);
-		}
-
 		[TestMethod]
 		public void EverythingGoesAsItShould()
 		{
 			GeoCodeAddressModel.GeocodeAddressNonParsed addressData = CreateAddressData();
-			GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet result = SendData(HttpStatusCode.OK, addressData);
-
-			int brk = 5;
+			GeoCodeAddressResponseModel.WebServiceGeocodeQueryResultSet result = SendData(HttpStatusCode.OK, GeoCodeAddressModelSample.StringSample, addressData);
 		}
 	}
 }
