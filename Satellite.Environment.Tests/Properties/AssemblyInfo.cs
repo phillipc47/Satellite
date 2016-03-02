@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Satellite.Environment.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HCA")]
+[assembly: AssemblyCompany("Phillip Casey")]
 [assembly: AssemblyProduct("Satellite.Environment.Tests")]
-[assembly: AssemblyCopyright("Copyright © HCA 2016")]
+[assembly: AssemblyCopyright("Copyright © Phillip Casey")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
