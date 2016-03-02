@@ -7,7 +7,7 @@ using Satellite.Envrionment.Configuration;
 
 namespace Satellite.Environment.Tests.Configuration
 {
-	[TestFixture]
+    [TestFixture]
     public class ApplicationConfigurationManagerTest
     {
 		private static class KeyNames
